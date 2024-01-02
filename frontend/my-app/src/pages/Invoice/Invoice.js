@@ -26,7 +26,6 @@ const Invoice = () => {
             Customer Name: {invoice.customer_name}
             <br />
             Invoice Date: {invoice.invoice_date}
-            {/* Add more details based on your invoice structure */}
           </li>
         ))}
       </ul>
