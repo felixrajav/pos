@@ -62,28 +62,31 @@ const NewInvoice = () => {
     const overallTotal = items.reduce((total, item) => total + item.total, 0);
     return overallTotal;
   };
-  const createInvoice = async () => {
-    try {
-      const response = await fetch('http://localhost:8800/invoices', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          customer_name: customerName,
-          invoice_date: invoiceDate,
-          items: items,
-        }),
-      });
 
-      const data = await response.json();
+const createInvoice = async () => {
+  console.log("Items:", items); 
+  try {
+    const response = await fetch('http://localhost:8800/invoices', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        customer_name: customerName,
+        invoice_date: invoiceDate,
+        items: items,
+      }),
+    });
 
-      // Handle the response data as needed
-      console.log(data);
-    } catch (error) {
-      console.error('Error creating invoice:', error);
-    }
-  };
+    const data = await response.json();
+
+
+    console.log(data);
+  } catch (error) {
+    console.error('Error creating invoice:', error);
+  }
+};
+
 
   return (
     <div>
@@ -127,7 +130,7 @@ const NewInvoice = () => {
           {items.map((item, index) => (
             <tr key={index}>
               <td>{index + 1}</td>
-              <td>{item.product}</td>
+              <td>{item.product}</td> 
               <td>{item.quantity}</td>
               <td>{item.price}</td>
               <td>{item.discount_type}</td>

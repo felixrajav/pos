@@ -23,9 +23,13 @@ const Invoice = () => {
       <ul>
         {invoices.map((invoice) => (
           <li key={invoice.invoice_id}>
+            Invoice Id: {invoice.invoice_id}
+            <br />
             Customer Name: {invoice.customer_name}
             <br />
             Invoice Date: {invoice.invoice_date}
+            <br />
+            Invoice amount: {invoice.total_amount}
           </li>
         ))}
       </ul>

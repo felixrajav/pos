@@ -6,6 +6,7 @@ import AddProduct from "./pages/AddProduct/AddProduct";
 import EditProduct from "./pages/Edit/EditProduct";
 import Delete from "./pages/Delete";
 import NewInvoice from "./pages/Invoice/NewInvoice";
+import Invoice from "./pages/Invoice/Invoice";
 
 function App() {
   return (
@@ -18,6 +19,8 @@ function App() {
       <Route path="/edit/:id"  element={<EditProduct/>}/>
       <Route path="/delete/:id"  element={<Delete/>}/>
       <Route path="/newinvoice"  element={<NewInvoice/>}/>
+      <Route path="/invoice"  element={<Invoice/>}/>
+
      </Routes>
      </Router>
     </div>

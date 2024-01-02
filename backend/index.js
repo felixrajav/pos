@@ -95,8 +95,8 @@ app.post('/invoices', (req, res) => {
   const { customer_name, invoice_date, items } = req.body;
 
   const productIds = items.map(item => item.product_id);
-  const checkProductsQuery = "SELECT COUNT(*) as count FROM products WHERE id IN (?)";
-  
+  const checkProductsQuery = "SELECT COUNT(*) as count FROM product WHERE id IN (?)";
+
   db.query(checkProductsQuery, [productIds], (err, result) => {
     if (err) {
       console.log(err);
@@ -106,9 +106,8 @@ app.post('/invoices', (req, res) => {
     const productCount = result[0].count;
 
     if (productCount !== productIds.length) {
-      
       return res.status(400).json({ error: "Invalid product IDs in the items array" });
-    }
+    } 
 
    
     const insertInvoiceQuery = "INSERT INTO invoices (customer_name, invoice_date) VALUES (?, ?)";
@@ -117,7 +116,7 @@ app.post('/invoices', (req, res) => {
     db.query(insertInvoiceQuery, invoiceValues, (err, result) => {
       if (err) {
         console.log(err);
-        return res.json(err);
+        return res.json(err); 
       }
 
       const invoiceId = result.insertId;
